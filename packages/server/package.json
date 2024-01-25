@@ -1,0 +1,25 @@
+{
+	"name": "server",
+	"version": "0.0.1",
+	"description": "",
+	"scripts": {
+		"build": "tsc && tsc-alias",
+		"start": "npm run build && node ./lib/app.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"core": "link:..\\core",
+		"custom-decorator": "^0.0.19",
+		"mongodb": "^4.12.1",
+		"mongoose": "^6.7.3",
+		"schema": "link:..\\schema"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.15",
+		"@types/node": "^18.11.9",
+		"ts-node": "^10.9.1",
+		"ts-node-dev": "^2.0.0",
+		"tsc-alias": "^1.8.2"
+	}
+}

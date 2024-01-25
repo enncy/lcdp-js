@@ -1,0 +1,21 @@
+{
+	"name": "core",
+	"version": "1.0.0",
+	"description": "",
+	"main": "./lib/index.js",
+	"types": "./lib/index.d.ts",
+	"scripts": {},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"custom-decorator": "^0.0.19",
+		"dayjs": "^1.11.6",
+		"express-session": "^1.17.3",
+		"reflect-metadata": "^0.1.13"
+	},
+	"devDependencies": {
+		"@types/express-fileupload": "^1.4.1",
+		"@types/express-session": "^1.17.5",
+		"@types/multer": "^1.4.7"
+	}
+}

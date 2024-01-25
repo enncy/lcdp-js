@@ -1,0 +1,9 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"include": ["./src/**/*.ts", "./index.ts", "./web.ts"],
+	"exclude": ["./vite.config.ts"],
+	"compilerOptions": {
+		"outDir": "./lib",
+		"typeRoots": ["./node_modules/@types", "./src/types"]
+	}
+}
