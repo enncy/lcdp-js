@@ -3,6 +3,7 @@ import Menu from './src/components/Menu.vue';
 import RouteMenus from './src/components/RouteMenus.vue';
 import MarkdownText from './src/components/MarkdownText.vue';
 import Loading from './src/components/Loading.vue';
+export * from './src/interface';
 export { createSchemaRoutes } from './src/route';
 export { createWebApis } from './src/utils/apis';
 

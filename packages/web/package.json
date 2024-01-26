@@ -1,12 +1,12 @@
 {
 	"name": "@lcdp-js/web",
-	"version": "1.0.1",
+	"version": "1.0.3",
 	"description": "lcdp-js package web",
 	"main": "./es/index.js",
 	"types": "./lib/index.d.ts",
 	"jsdelivr": "./lib/index.js",
 	"scripts": {
-		"build": "vue-tsc --noEmit && vite build",
+		"build": "vue-tsc --noEmit && vite build && tsc",
 		"build:w": "vue-tsc --noEmit && vite build -w"
 	},
 	"files": [
