@@ -9,15 +9,16 @@
 
 			<a-collapse
 				:default-active-key="['1']"
-				:bordered="false"
+				:bordered="cardStyleProps.border"
 				class="mb-3"
 			>
 				<a-collapse-item
+					v-if="enableSearch"
 					header="数据搜索"
 					key="1"
-					:bordered="false"
+					:bordered="cardStyleProps.border"
 				>
-					<a-card :bordered="false">
+					<a-card :bordered="cardStyleProps.border">
 						<a-row>
 							<a-col :flex="1">
 								<a-row :gutter="responsive.gutter">
@@ -174,10 +175,14 @@
 				</a-collapse-item>
 			</a-collapse>
 
-			<a-card :bordered="false">
+			<a-card
+				:bordered="cardStyleProps.border"
+				:class="cardClass"
+				:style="cardStyle"
+			>
 				<a-row
 					class="align-items-baseline"
-					v-if="mode === 'list'"
+					v-if="enableTableOperate"
 					:gutter="[responsive.gutter, responsive.gutter]"
 				>
 					<a-col
@@ -264,18 +269,7 @@
 						:data="state.onlyShowSelectedData ? selectedData.map((s) => s.list).flat() : source.map((i) => ({ key: i.uid, ...i }))"
 						:selected-keys="state.selectedKeys"
 						@update:selected-keys="onUpdateSelectedKeys"
-						:row-selection="
-							mode === 'provider'
-								? {
-										type: type,
-										checkStrictly: true,
-										onlyCurrent: true
-								  }
-								: {
-										type: 'checkbox',
-										showCheckedAll: true
-								  }
-						"
+						:row-selection="tableRowSelection"
 						v-model:pagination="state.pagination"
 						@page-change="(page: number) => (state.pagination.current = page)"
 						@page-size-change="(size: number) => (state.pagination.pageSize = size)"
@@ -395,8 +389,8 @@
 	</div>
 </template>
 <script setup lang="ts" generic="S extends BaseSchema">
-import type { WebApis, BaseSchema, ListApiCondition } from '@lcdp-js/core';
-import { Input, Message, type TableColumnData } from '@arco-design/web-vue';
+import type { BaseSchema, ListApiCondition } from '@lcdp-js/core';
+import { Input, Message, TableRowSelection, type TableColumnData } from '@arco-design/web-vue';
 import { IconSearch, IconRefresh, IconPlus } from '@arco-design/web-vue/es/icon';
 import { reactive, computed, onMounted, ref } from 'vue';
 import EntityModal from './table/EntityModal.vue';
@@ -404,21 +398,30 @@ import FunctionsDropdown from './table/FunctionsDropdown.vue';
 import { componentSearchMapping } from './table/mapping';
 import { UpdateForm } from './table/interface';
 import Loading from './components/Loading.vue';
-import { RouteRecordAndTableRaw } from './interface';
+import { RouteRecordAndTableRaw, WebApis } from './interface';
+import { CSSProperties } from 'vue';
 
 const props = withDefaults(
 	defineProps<{
+		/** Apis */
 		apis: WebApis<any>;
+		/** 当前的实体路由信息 */
 		schemaRoute: RouteRecordAndTableRaw;
+		/** 表格大小 */
 		size?: 'small' | 'default';
-		selected?: string[];
-		type?: 'radio' | 'checkbox';
-		/**
-		 * 表格模式
-		 * provider: 作为数据提供者，提供数据给其他组件
-		 * list: 作为数据列表，对数据进行增删改查
-		 */
-		mode?: 'provider' | 'list';
+		/** 是否开启搜索功能 */
+		enableSearch?: boolean;
+		/** 是否开启表格上方操作区域 */
+		enableTableOperate?: boolean;
+		/** 卡片样式 */
+		cardStyleProps?: {
+			border?: boolean;
+			shadow?: boolean;
+		};
+		/** 表格选择信息 */
+		tableRowSelection?: TableRowSelection;
+		cardStyle?: CSSProperties;
+		cardClass?: string;
 		/** 表格名 */
 		schemaName?: string;
 		schema?: Function;
@@ -434,6 +437,15 @@ const props = withDefaults(
 	}>(),
 	{
 		size: 'default',
+		enableSearch: true,
+		cardStyleProps: () => ({
+			border: false,
+			shadow: false
+		}),
+		rowSelection: () => ({
+			type: 'checkbox',
+			showCheckedAll: true
+		}),
 		selected: () => [],
 		type: 'radio',
 		mode: 'list',

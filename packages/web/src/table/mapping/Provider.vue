@@ -25,12 +25,17 @@
 			@ok="onSelectConfirm"
 		>
 			<SchemaTable
-				mode="provider"
 				:apis="apis"
 				:schema-route="schemaRoute"
 				:schema-name="property.provider.target"
 				@selected="onSelected"
-				:type="property.provider.type"
+				:enable-search="true"
+				:enable-table-operate="false"
+				:table-row-selection="{
+					type: property.provider.type,
+					checkStrictly: true,
+					onlyCurrent: true
+				}"
 			></SchemaTable>
 		</a-modal>
 	</div>
@@ -38,8 +43,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import SchemaTable from '../../SchemaTable.vue';
-import type { WebApis, BaseSchema } from '@lcdp-js/core';
-import { RouteRecordAndTableRaw, TableProperty, SchemaMetadata } from '../../interface';
+import type { BaseSchema } from '@lcdp-js/core';
+import { RouteRecordAndTableRaw, TableProperty, SchemaMetadata, WebApis } from '../../interface';
 
 const props = withDefaults(
 	defineProps<{

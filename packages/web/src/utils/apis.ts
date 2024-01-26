@@ -1,5 +1,6 @@
 import { AxiosInstance, AxiosRequestConfig } from 'axios';
-import type { BaseControllerConstructor, ControllerData, ControllerPropertiesMetadata, WebApis } from '@lcdp-js/core';
+import type { BaseControllerConstructor, ControllerData, ControllerPropertiesMetadata } from '@lcdp-js/core';
+import { WebApis } from '../interface';
 
 /**
  * 创建前端控制器接口请求，并带有类型提示

@@ -9,7 +9,7 @@ import type {
 	BaseControllerConstructor,
 	CommonResponse
 } from '@lcdp-js/core';
-import type { SortOrder, Document } from 'mongoose';
+import type { Document } from 'mongoose';
 /**
  * Schema 的元数据
  */
@@ -37,16 +37,6 @@ export interface TableProperty {
 	item: TableItemMetadata<any>;
 	ref: TableItemRefMetadata<any, any>;
 	provider: TableItemProviderMetadata<any, 'radio' | 'checkbox'>;
-}
-
-/** 查询条件 */
-export interface ListApiCondition {
-	/** 创建时间范围查询 */
-	create_time_range?: [string, string];
-	/** 更新时间范围查询 */
-	update_time_range?: [string, string];
-	/** 排序器 */
-	sorter?: Record<string, SortOrder | 0>;
 }
 
 /**
