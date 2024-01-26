@@ -1,4 +1,4 @@
-import type { BaseSchema } from 'core';
+import type { BaseSchema } from '@lcdp-js/core';
 
 /** 更的字段对象 */
 export type UpdateForm<T extends BaseSchema = BaseSchema> = Partial<T> & {

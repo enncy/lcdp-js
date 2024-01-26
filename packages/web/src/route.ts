@@ -1,6 +1,6 @@
 import { RouteComponent } from 'vue-router';
 import { RouteRecordAndTableRaw } from './interface';
-import type { ApiController } from 'core';
+import type { ApiController } from '@lcdp-js/core';
 
 /**
  * 通过 schema 信息生成 route 路由信息列表

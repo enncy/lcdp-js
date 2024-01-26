@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import SchemaTable from '../../SchemaTable.vue';
-import type { WebApis, BaseSchema } from 'core';
+import type { WebApis, BaseSchema } from '@lcdp-js/core';
 import { RouteRecordAndTableRaw, TableProperty, SchemaMetadata } from '../../interface';
 
 const props = withDefaults(

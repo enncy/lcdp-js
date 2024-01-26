@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router';
-import { RouteMetadata, TableMetadata, TableItemMetadata, TableItemRefMetadata, TableItemProviderMetadata, BaseSchema } from 'core';
+import { RouteMetadata, TableMetadata, TableItemMetadata, TableItemRefMetadata, TableItemProviderMetadata, BaseSchema } from '@lcdp-js/core';
 
 /**
  * Schema 的元数据

@@ -395,7 +395,7 @@
 	</div>
 </template>
 <script setup lang="ts" generic="S extends BaseSchema">
-import type { WebApis, BaseSchema, ListApiCondition } from 'core';
+import type { WebApis, BaseSchema, ListApiCondition } from '@lcdp-js/core';
 import { Input, Message, type TableColumnData } from '@arco-design/web-vue';
 import { IconSearch, IconRefresh, IconPlus } from '@arco-design/web-vue/es/icon';
 import { reactive, computed, onMounted, ref } from 'vue';

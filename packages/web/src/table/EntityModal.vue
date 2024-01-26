@@ -40,7 +40,7 @@ import { watch, reactive } from 'vue';
 import type { RouteMeta } from 'vue-router';
 import { componentModalInputMapping, componentPreviewMapping } from './mapping';
 import { UpdateForm } from './interface';
-import type { BaseSchema } from 'core';
+import type { BaseSchema } from '@lcdp-js/core';
 import { SchemaMetadata } from '../interface';
 
 const props = defineProps<{

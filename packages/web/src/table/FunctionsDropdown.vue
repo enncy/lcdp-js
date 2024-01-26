@@ -19,7 +19,7 @@ import * as xlsx from 'xlsx';
 import dayjs from 'dayjs';
 import type { RouteMeta } from 'vue-router';
 import { h, ref } from 'vue';
-import type { BaseSchema } from 'core';
+import type { BaseSchema } from '@lcdp-js/core';
 import { SchemaMetadata } from '../interface';
 
 const props = defineProps<{
