@@ -10,6 +10,16 @@ export interface Pagination {
 	size: number;
 }
 
+/** 查询条件 */
+export interface ListApiCondition {
+	/** 创建时间范围查询 */
+	create_time_range?: [string, string];
+	/** 更新时间范围查询 */
+	update_time_range?: [string, string];
+	/** 排序器 */
+	sorter?: Record<string, SortOrder | 0>;
+}
+
 export interface Page<S extends BaseSchema> {
 	data: S[];
 	current: number;
@@ -32,9 +42,7 @@ export type BaseControllerConstructor = {
 /** 控制器反射获取后的数据 */
 export type ControllerData<
 	Constructor extends BaseControllerConstructor = BaseControllerConstructor,
-	ControllerType = BaseControllerConstructor extends { new (opts: any): infer ControllerInfer }
-		? ControllerInfer
-		: BaseController
+	ControllerType = BaseControllerConstructor extends { new (opts: any): infer ControllerInfer } ? ControllerInfer : BaseController
 > = {
 	/** 控制器实例 */
 	controllerInstance: ControllerType;

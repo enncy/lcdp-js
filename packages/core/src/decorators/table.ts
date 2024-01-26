@@ -1,7 +1,6 @@
-import { CustomDecorator } from 'custom-decorator';
-import { CommonResponse, Page, Pagination } from '../controller/interface';
+import { CommonResponse, ListApiCondition, Page, Pagination } from '../controller/interface';
 import { BaseSchema } from '../schema';
-import { ListApiCondition } from '../interface';
+import { CustomDecorator } from 'custom-decorator';
 
 export interface TableMetadata<S extends BaseSchema, ApiType> extends TableApis<S, ApiType> {
 	/** 实体名称 */

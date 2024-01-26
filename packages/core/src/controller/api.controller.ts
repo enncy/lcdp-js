@@ -2,11 +2,10 @@ import { FilterQuery, Model, SortOrder } from 'mongoose';
 import { Api, Param } from '../decorators';
 import { BaseSchema } from '../schema';
 import { BaseController } from './index';
-import { CommonResponse, Page, Pagination } from './interface';
+import { CommonResponse, ListApiCondition, Page, Pagination } from './interface';
 import { json } from './utils';
 import { Request, Response } from 'express/index';
 import { uuid } from '../utils';
-import { ListApiCondition } from '../interface';
 
 export class ApiController<S extends BaseSchema = BaseSchema, Req extends Request = Request, Res extends Response = Response> extends BaseController<Req, Res> {
 	/** 数据库模型 */

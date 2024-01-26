@@ -1,6 +1,6 @@
 {
 	"extends": "../../tsconfig.base.json",
-	"include": ["./src/**/*.ts", "./index.ts", "./web.ts"],
+	"include": ["./src/**/*.ts", "./index.ts"],
 	"exclude": ["./vite.config.ts"],
 	"compilerOptions": {
 		"outDir": "./lib",
