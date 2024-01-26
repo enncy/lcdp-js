@@ -1,17 +1,36 @@
-import { fileURLToPath, URL } from 'node:url'
-
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import path from 'path'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
-  build: {},
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
-})
+	plugins: [vue(), vueJsx()],
+	build: {
+		target: 'modules',
+		emptyOutDir: true,
+		minify: false,
+		rollupOptions: {
+			external: ['vue', '@arco-design/web-vue'],
+			input: ['./index.ts'],
+			output: [
+				{
+					format: 'es',
+					dir: 'es',
+					entryFileNames: '[name].js',
+					preserveModules: true,
+					preserveModulesRoot: './'
+				},
+				{
+					format: 'commonjs',
+					dir: 'lib',
+					entryFileNames: '[name].js',
+					preserveModules: true,
+					preserveModulesRoot: './'
+				}
+			]
+		},
+		lib: {
+			entry: './index.ts'
+		}
+	}
+});
