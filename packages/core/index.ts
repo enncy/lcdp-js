@@ -6,4 +6,3 @@ export * from './src/controller';
 export * from './src/controller/interface';
 export * from './src/controller/utils';
 export * from './src/controller/api.controller';
-export * from './src/interface';
